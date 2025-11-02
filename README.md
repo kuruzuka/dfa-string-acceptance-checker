@@ -71,7 +71,7 @@ Output: Rejected
 ## Author
 Jim Paolo Pendon  
 BSCS  
-CS26 - 4381
+CST4L - 4383
 
 ## How It Works
 The program reads a binary string from the user, validates that it contains only 0s and 1s, and then checks if the string ends with the pattern '01'. If the pattern is found at the end of the string, the DFA accepts it; otherwise, it rejects it.
