@@ -4,9 +4,7 @@
 Implement a DFA (Deterministic Finite Automaton) that accepts binary strings ending with `01`.
 
 ## Description
-This project contains two implementations of a DFA string checker:
-1. **DFAStringChecker.java** - Full DFA simulation with state transitions
-2. **DFAStringCheckerSimple.java** - Simplified version using string matching
+This program implements a DFA that checks if a binary string ends with '01'. The program validates the input and determines whether the string is accepted or rejected based on the DFA's language specification.
 
 ## Language Specification
 - **Alphabet**: {0, 1}
@@ -15,45 +13,16 @@ This project contains two implementations of a DFA string checker:
   - ✓ Accepted: `01`, `1101`, `001`, `10101`
   - ✗ Rejected: `1110`, `00`, `1`, `10`
 
-## DFA Design
-
-### States
-- **q0** - Start state (initial or after seeing '1')
-- **q1** - After seeing '0'
-- **q2** - Accept state (after seeing '01')
-
-### State Transitions
-```
-q0 --0--> q1  (saw '0', waiting for '1')
-q0 --1--> q0  (saw '1', reset)
-q1 --0--> q1  (another '0', stay in q1)
-q1 --1--> q2  (saw '01', move to accept state)
-q2 --0--> q1  (new '0', could be start of new '01')
-q2 --1--> q0  (saw '1', reset)
-```
-
-### State Diagram
-```
-    1        0        1
-q0 ---> q0 ---> q1 ---> q2 (accept)
- ^       |       ^       |
- |       |       |       |
- +-------+       +---0---+
-    1                1
-```
-
 ## How to Compile and Run
 
-### DFAStringChecker (Full DFA Simulation)
+### Compilation
 ```bash
 javac DFAStringChecker.java
-java DFAStringChecker
 ```
 
-### DFAStringCheckerSimple (Simplified Version)
+### Execution
 ```bash
-javac DFAStringCheckerSimple.java
-java DFAStringCheckerSimple
+java DFAStringChecker
 ```
 
 ## Sample Input/Output
@@ -84,23 +53,16 @@ Output: Rejected
 
 ## Features
 - ✓ Input validation (only accepts binary strings)
-- ✓ Clear state transition logic
-- ✓ Detailed comments explaining DFA behavior
+- ✓ Efficient pattern matching
+- ✓ Clear and concise code
 - ✓ Error handling for invalid input
+- ✓ User-friendly input/output format
 
 ## Implementation Details
-
-### DFAStringChecker.java
-- Uses enum for state representation
-- Simulates DFA by processing each character
-- Demonstrates full state machine behavior
-- Educational approach showing DFA concepts
-
-### DFAStringCheckerSimple.java
-- Uses `endsWith()` method for pattern matching
-- More concise and practical
-- Same result as full DFA simulation
-- Better for production use
+- Uses `endsWith("01")` method to check if string ends with '01'
+- Validates input using regex pattern `[01]+` to ensure only binary digits
+- Returns "Accepted" if string ends with '01', otherwise "Rejected"
+- Handles edge cases and invalid input gracefully
 
 ## Requirements
 - Java Development Kit (JDK) 8 or higher
@@ -111,5 +73,12 @@ Jim Paolo Pendon
 BSCS  
 CS26 - 4381
 
-## Notes
-While the simplified version is more efficient for this specific problem, the full DFA implementation demonstrates important concepts in automata theory and is valuable for understanding how finite state machines work.
+## How It Works
+The program reads a binary string from the user, validates that it contains only 0s and 1s, and then checks if the string ends with the pattern '01'. If the pattern is found at the end of the string, the DFA accepts it; otherwise, it rejects it.
+
+## Screenshots
+<img width="180" height="64" alt="image" src="https://github.com/user-attachments/assets/cbefd72e-f7d7-4352-9a36-ceb8515363d4" />
+
+<img width="199" height="74" alt="image" src="https://github.com/user-attachments/assets/13c29c09-50c9-4fdf-baa2-7ac6b4bbbc1c" />
+
+
